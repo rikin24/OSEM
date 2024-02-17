@@ -1,6 +1,17 @@
-# Your project name here
+# Online Smart Employee Manager (OSEM)
 
-## Information about this repository
+## Project Outline:
+
+Online Smart Employee Manager (OSEM) is an online website that managers of an organisation can
+use to invite new employees to, where they can manage any credentials and teams, along with viewing
+multiple statistics and team chat spaces. Employees will have separate logins that will allow them to
+manage their own tasks and teams. The system will be relying on a backend database, which will store
+login details as well as any credentials, teams and employee data that may have relationships.
+
+## Setup:
+
+
+### Original Documentation: 
 
 This is the repository that you are going to use **individually** for developing your project. Please use the resources provided in the module to learn about **plagiarism** and how plagiarism awareness can foster your learning.
 
