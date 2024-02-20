@@ -1,5 +1,6 @@
 <?php
-include "../db-config.php";
+session_start();
+include "db-config.php";
 
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['position'])) {
 
@@ -10,7 +11,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
         return $data;
     }
 
-    $email =  input ($_POST['email']);
+    $email = input ($_POST['email']);
     $password = input ($_POST['password']);
     $position = input ($_POST['position']);
 
@@ -24,10 +25,19 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
         $result = mysqli_query($link, $sql);
 
         if (mysqli_num_rows($result) === 1) {
-            echo "WORKS!";
             $userData = mysqli_fetch_assoc($result);
-            echo "<pre>";
-            print_r($userData);
+            if ($userData['email'] === $email && $userData['password'] === $hashedPassword && $userData['position'] === $position) {
+                $_SESSION['name'] = $userData['name'];
+                $_SESSION['id'] = $userData['id'];
+                $_SESSION['email'] = $userData['email'];
+                $_SESSION['position'] = $userData['position'];
+
+                header("Location: ../man-home.php");
+            } else {
+                header("Location: ../index.php?error=Incorrect Details");
+            }
+        } else {
+            header("Location: ../index.php?error=Incorrect Details");
         }
     }
 
