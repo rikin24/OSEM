@@ -15,6 +15,13 @@
               action="php/login-check.php"
               method="post">
             <h1 class="text-center text-primary fs-2 p-3">Login</h1>
+
+            <?php if (isset($_GET['error'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?=$_GET['error']?>
+                </div>
+            <?php } ?>
+
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="email">
@@ -24,9 +31,10 @@
                 <input type="password" class="form-control" name="password" id="password">
             </div>
             <div class="mb-1">
-                <label class="form-label">Select Role</label>
+                <label class="form-label">Select Position</label>
             </div>
-            <select class="form-select mb-4">
+            <select class="form-select mb-4"
+                name="position">
                 <option selected value="manager">Manager</option>
                 <option value="employee">Employee</option>
             </select>
