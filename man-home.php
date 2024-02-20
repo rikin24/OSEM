@@ -1,8 +1,9 @@
 <?php
-session_start();
-include "db-config.php";
-if (isset($_SESSION['email']) && isset($_SESSION['id'])) {
-    echo "hello";
-} else{
-    header("Location: index.php");
-} ?>
+include "./php/UI.php";
+?>
+
+<title>OSEM</title>
+<body>
+<h1>Test</h1>
+</body>
+
