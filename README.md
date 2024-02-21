@@ -8,8 +8,8 @@ multiple statistics and team chat spaces. Employees will have separate logins th
 manage their own tasks and teams. The system will be relying on a backend database, which will store
 login details as well as any credentials, teams and employee data that may have relationships.
 
-Rikin Bhudia\
-209013380
+Student Name: Rikin Bhudia\
+Student Number: 209013380
 
 ## Setup:
 
