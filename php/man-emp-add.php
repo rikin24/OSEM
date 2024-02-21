@@ -2,6 +2,7 @@
 include "./db-config.php";
 
 if (isset($_POST['create'])) {
+    // Format employee data (if entered) when pressing add
     function input($data){
         $data = trim($data);
         $data = stripslashes($data);
@@ -22,6 +23,7 @@ if (isset($_POST['create'])) {
         header("Location: ../man-employees-add.php?error=Missing Password");
     } else {
 
+        // Hash entered password before storing all details in the database
         $hashedPassword = md5($password);
         $sql = "INSERT INTO users (name, email, password, position) VALUES ('$name', '$email', '$hashedPassword', 'employee')";
         $result = mysqli_query($link, $sql);

@@ -11,10 +11,12 @@ include "./man-UI.php";
               action="php/man-emp-add.php"
               method="post">
             <?php if (isset($_GET['error'])) { ?>
+                <!--Fetch appropriate error-->
                 <div class="alert alert-danger" role="alert">
                     <?php echo $_GET['error']; ?>
                 </div>
             <?php } else if (isset($_GET['success'])) { ?>
+                <!--Fetch success message-->
                 <div class="alert alert-success" role="alert">
                     <?php echo $_GET['success']; ?>
                 </div>

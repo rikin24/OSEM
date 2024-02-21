@@ -35,6 +35,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
                 $_SESSION['email'] = $userData['email'];
                 $_SESSION['position'] = $userData['position'];
 
+                // Redirect user to the correct portal
                 if ($position === 'manager') {
                     header("Location: ../man-home.php");
                 } else if ($position === 'employee') {

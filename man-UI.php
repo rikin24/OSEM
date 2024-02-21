@@ -1,11 +1,13 @@
 <?php
-// Start the session and ensure login/session details match, otherwise return to login page
+// Start the session and ensure login/session details match
 session_start();
 include "./php/db-config.php";
 if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION['email']) !== true && isset($_SESSION['id']) !== true)) {
+    // Return user to login page if details don't match
     header("Location: index.php");
     exit;
 } else if ($_SESSION['position'] === 'employee') {
+    // Return user to home of correct portal if they attempt to access the wrong one
     header("Location: emp-home.php");
 } ?>
 
@@ -22,6 +24,7 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 <nav class="navbar navbar-dark bg-dark justify-content-end">
     <p class="navbar-text text-white">Welcome,
         <?php
+        // Display name of current session user
             $currentName = $_SESSION['name'];
             echo $currentName . " ";
         ?>
