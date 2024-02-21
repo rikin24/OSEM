@@ -46,7 +46,8 @@ include "./man-UI.php";
                             <td><?=$empData['email'];?></td>
                             <td>
                                 <div class="btn-group-sm">
-                                    <a href="#" class="btn btn-outline-primary">Update</a>
+                                    <!--Update/delete employee with corresponding unique id in database-->
+                                    <a href="man-employees-update.php?id=<?=$empData['id']?>" class="btn btn-outline-primary">Update</a>
                                     <a href="php/man-emp-rem.php?id=<?=$empData['id']?>"
                                        class="btn btn-outline-danger mx-1">Remove</a>
                                 </div>
