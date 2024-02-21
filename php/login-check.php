@@ -3,7 +3,7 @@ session_start();
 include "db-config.php";
 
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['position'])) {
-
+// Format login data (if entered) when pressing submit
     function input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -20,13 +20,16 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
     } else if (empty($password)) {
         header("Location: ../index.php?error=Missing Password");
     } else {
+        // Hash entered password before checking it against hashed password in database
         $hashedPassword = md5($password);
         $sql = "SELECT * FROM users WHERE email='$email' AND password='$hashedPassword' AND position='$position'";
         $result = mysqli_query($link, $sql);
 
         if (mysqli_num_rows($result) === 1) {
+            // Ensure the user details are unique in the database (only found for one row)
             $userData = mysqli_fetch_assoc($result);
             if ($userData['email'] === $email && $userData['password'] === $hashedPassword && $userData['position'] === $position) {
+                // If details match the database, create a session for the user
                 $_SESSION['name'] = $userData['name'];
                 $_SESSION['id'] = $userData['id'];
                 $_SESSION['email'] = $userData['email'];

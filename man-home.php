@@ -1,9 +1,11 @@
 <?php
-include "./php/UI.php";
+include "./man-UI.php";
 ?>
 
-<title>OSEM</title>
+<title>OSEM - Home</title>
 <body>
-<h1>Test</h1>
+    <div class="container d-flex justify-content-center align-items-center"
+         style="min-height: 100vh">
+        <h1>Test</h1>
+    </div>
 </body>
-
