@@ -8,28 +8,32 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 } ?>
 
 <!DOCTYPE html>
-<!--Common UI features across all pages are called from here-->
+<!--Common UI and features across all pages are called from here-->
 <html>
 <head>
+    <title>OSEM Manager Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login-styles.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark justify-content-end">
-    <p class="navbar-text text-white">Welcome User | OSEM Manager Portal</p>
+    <p class="navbar-text text-white">Welcome,
+        <?php
+            $currentName = $_SESSION['name'];
+            echo $currentName . " ";
+        ?>
+
+        | OSEM Manager Portal</p>
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="man-home.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="man-employees.php">Employees</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
     </ul>
 </nav>
