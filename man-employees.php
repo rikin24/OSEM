@@ -4,11 +4,23 @@ include "./man-UI.php";
 
 <body>
     <h2 class="text-dark text-center p-3">Employees</h2>
+    <br>
     <div class="d-flex justify-content-center align-items-center">
         <a href="man-employees-add.php" class="btn btn-primary">Add Employee</a>
     </div>
-    <div class="container d-flex justify-content-center align-items-center"
-         style="min-height: 20vh">
+    <br>
+        <?php if (isset($_GET['error'])) { ?>
+            <!--Fetch appropriate error-->
+            <div class="alert alert-danger start-50 translate-middle-x my-3 text-center" style="width: 20%" role="alert">
+                <?php echo $_GET['error']; ?>
+            </div>
+        <?php } else if (isset($_GET['success'])) { ?>
+            <!--Fetch success message-->
+            <div class="alert alert-success start-50 translate-middle-x my-3 text-center" style="width: 20%" role="alert">
+                <?php echo $_GET['success']; ?>
+            </div>
+        <?php } ?>
+    <div class="container d-flex justify-content-center align-items-center">
                 <?php
                 include "./php/db-config.php";
                 $sql = "SELECT * FROM users WHERE position='employee' ORDER BY name ASC";
@@ -19,18 +31,26 @@ include "./man-UI.php";
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
                     $i = 0;
                     while($empData = mysqli_fetch_assoc($empRead)){
-                        // Fetch data from database corresponding to SQL command earlier and display then iterate for each row
+                        // Fetch data from database corresponding to SQL command earlier, then display each row
                         $i++;
                     ?>
                         <tr>
                             <td><?=$empData['name']?></td>
                             <td><?=$empData['email'];?></td>
+                            <td>
+                                <div class="btn-group-sm">
+                                    <a href="#" class="btn btn-outline-primary">Update</a>
+                                    <a href="php/man-emp-rem.php?id=<?=$empData['id']?>"
+                                       class="btn btn-outline-danger mx-1">Remove</a>
+                                </div>
+                            </td>
                         </tr>
                     <?php } ?>
                     </tbody>
