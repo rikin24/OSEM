@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OSEM - Login</title>
+    <title>OSEM Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
 
     <div class="container d-flex justify-content-center align-items-center"
          style="min-height: 100vh">
         <h1 class="text-dark position-absolute top-0 start-50 translate-middle-x p-4">Online Smart Employee Manager</h1>
-        <form class="border shadow-sm p-4 rounded-3"
+        <form class="border shadow-sm p-4 rounded-3 bg-white"
               style="width: 450px;"
               action="php/login-check.php"
               method="post">
