@@ -5,8 +5,8 @@ include "./php/db-config.php";
 if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION['email']) !== true && isset($_SESSION['id']) !== true)) {
     header("Location: index.php");
     exit;
-} else if ($_SESSION['position'] === 'employee') {
-    header("Location: emp-home.php");
+} else if ($_SESSION['position'] === 'manager') {
+    header("Location: man-home.php");
 } ?>
 
 <!DOCTYPE html>
@@ -22,17 +22,14 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 <nav class="navbar navbar-dark bg-dark justify-content-end">
     <p class="navbar-text text-white">Welcome,
         <?php
-            $currentName = $_SESSION['name'];
-            echo $currentName . " ";
+        $currentName = $_SESSION['name'];
+        echo $currentName . " ";
         ?>
 
-        | OSEM Manager Portal</p>
+        | OSEM Employee Portal</p>
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="man-home.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="man-employees.php">Employees</a>
+            <a class="nav-link" href="emp-home.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>

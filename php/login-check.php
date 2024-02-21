@@ -35,7 +35,12 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
                 $_SESSION['email'] = $userData['email'];
                 $_SESSION['position'] = $userData['position'];
 
-                header("Location: ../man-home.php");
+                if ($position === 'manager') {
+                    header("Location: ../man-home.php");
+                } else if ($position === 'employee') {
+                    header("Location: ../emp-home.php");
+                }
+
             } else {
                 header("Location: ../index.php?error=Incorrect Details");
             }
