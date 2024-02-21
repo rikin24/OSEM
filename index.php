@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OSEM</title>
+    <title>OSEM - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login-styles.css">
 </head>
@@ -9,13 +9,14 @@
 
     <div class="container d-flex justify-content-center align-items-center"
          style="min-height: 100vh">
-        <h1 class="position-absolute top-0 start-50 translate-middle-x p-4">Online Smart Employee Manager</h1>
+        <h1 class="text-dark position-absolute top-0 start-50 translate-middle-x p-4">Online Smart Employee Manager</h1>
         <form class="border shadow-sm p-4 rounded-3"
               style="width: 450px;"
               action="php/login-check.php"
               method="post">
             <h1 class="text-center text-primary fs-2 p-3">Login</h1>
 
+            <!--Fetch appropriate error-->
             <?php if (isset($_GET['error'])) { ?>
                 <div class="alert alert-danger" role="alert">
                     <?=$_GET['error']?>
