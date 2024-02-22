@@ -37,8 +37,8 @@
             </div>
             <select class="form-select mb-4"
                 name="position">
-                <option selected value="manager">Manager</option>
-                <option value="employee">Employee</option>
+                <option selected value="employee">Employee</option>
+                <option value="manager">Manager</option>
             </select>
             <div class="d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-primary">Submit</button>

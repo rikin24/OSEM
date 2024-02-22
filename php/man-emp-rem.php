@@ -1,7 +1,7 @@
 <?php
 include "./db-config.php";
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     // Format employee data
     function input($data){
         $data = trim($data);
@@ -17,10 +17,10 @@ if(isset($_GET['id'])){
 
     if ($result) {
         header("Location: ../man-employees.php?success=Employee Removed Successfully");
-    }else {
+    } else {
         header("Location: ../man-employees.php?error=An Unknown Error Occurred");
     }
 
-}else {
+} else {
     header("Location: ../man-employees.php");
 }
