@@ -15,12 +15,18 @@ if (isset($_POST['create'])) {
     $password = input ($_POST['password']);
     $position = input ($_POST['position']);
 
+    // Check if email already exists
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $check = mysqli_query($link, $sql);
+
     if (empty($name)) {
         header("Location: ../man-employees-add.php?error=Missing Name");
     } else if (empty($email)) {
         header("Location: ../man-employees-add.php?error=Missing Email");
     } else if (empty($password)) {
         header("Location: ../man-employees-add.php?error=Missing Password");
+    } else if (mysqli_num_rows($check) > 0) {
+        header("Location: ../man-employees-add.php?error=Email Already in Use");
     } else {
 
         // Hash entered password before storing all details in the database

@@ -34,14 +34,6 @@ include "./php/man-emp-upd.php";
             </div>
         </div>
         <div class="form-group">
-            <div class="mb-3">
-                <label for="email">Email</label>
-                <input class="form-control"
-                       type="email"
-                       id="email"
-                       name="email"
-                       value="<?=$empData['email'] ?>">
-            </div>
             <div class="mb-0">
                 <label class="form-label">Select Position</label>
             </div>
