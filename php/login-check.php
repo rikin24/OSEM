@@ -40,6 +40,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
                     header("Location: ../man-home.php");
                 } else if ($position === 'employee') {
                     header("Location: ../emp-home.php");
+                } else if ($position === 'admin') {
+                    header("Location: ../adm-home.php");
                 }
 
             } else {

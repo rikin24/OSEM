@@ -9,6 +9,8 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 } else if ($_SESSION['position'] === 'manager') {
     // Return user to home of correct portal if they attempt to access the wrong one
     header("Location: man-home.php");
+} else if ($_SESSION['position'] === 'admin') {
+    header("Location: adm-home.php");
 } ?>
 
 <!DOCTYPE html>

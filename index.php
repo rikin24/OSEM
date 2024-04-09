@@ -39,6 +39,7 @@
                 name="position">
                 <option selected value="employee">Employee</option>
                 <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
             </select>
             <div class="d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-primary">Submit</button>

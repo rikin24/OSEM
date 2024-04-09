@@ -9,15 +9,15 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 } else if ($_SESSION['position'] === 'employee') {
     // Return user to home of correct portal if they attempt to access the wrong one
     header("Location: emp-home.php");
-} else if ($_SESSION['position'] === 'admin') {
-    header("Location: adm-home.php");
+} else if ($_SESSION['position'] === 'manager') {
+    header("Location: man-home.php");
 } ?>
 
 <!DOCTYPE html>
 <!--Common UI and features across all pages are called from here-->
 <html>
 <head>
-    <title>OSEM Manager Portal</title>
+    <title>OSEM Admin Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
@@ -27,17 +27,17 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
     <p class="navbar-text text-white">Welcome,
         <?php
         // Display name of current session user
-            $currentName = $_SESSION['name'];
-            echo $currentName . " ";
+        $currentName = $_SESSION['name'];
+        echo $currentName . " ";
         ?>
 
-        | OSEM Manager Portal</p>
+        | OSEM Admin Portal</p>
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="man-home.php">Home</a>
+            <a class="nav-link" href="adm-home.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="man-employees.php">Employees</a>
+            <a class="nav-link" href="adm-managers.php">Managers</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>
