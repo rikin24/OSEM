@@ -41,6 +41,7 @@ include "./php/man-emp-upd.php";
             <div class="mb-3">
                 <?php
                 include "./php/db-config.php";
+                // Display current existing skills for selected employee
                 $sql = "SELECT * FROM skills WHERE empID='$id' ORDER BY skill_name ASC";
                 $skillsRead = mysqli_query($link, $sql);
                 if (mysqli_num_rows($skillsRead)) { ?>
@@ -49,6 +50,7 @@ include "./php/man-emp-upd.php";
                         <tr>
                             <th scope="col">Skill</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,6 +63,13 @@ include "./php/man-emp-upd.php";
                             <tr>
                                 <td><?=$skillsData['skill_name']?></td>
                                 <td><?=$skillsData['skill_desc'];?></td>
+                                <td>
+                                    <div class="btn-group-sm">
+                                        <!--Fetch selected skill to be deleted for the employee being updated-->
+                                        <a href="php/man-emp-skill-rem.php?empID=<?=$empData['id']?>&skill_name=<?=$skillsData['skill_name']?>"
+                                           class="btn btn-outline-danger mx-1">Remove</a>
+                                    </div>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>

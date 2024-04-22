@@ -23,6 +23,7 @@ include "./emp-UI.php";
     <div class="container d-flex justify-content-center align-items-center">
         <?php
         include "./php/db-config.php";
+        // List all skills of currently logged in employee
         $sql = "SELECT * FROM skills WHERE empID='$currentID' ORDER BY skill_name ASC";
         $skillsRead = mysqli_query($link, $sql);
         if (mysqli_num_rows($skillsRead)) { ?>
