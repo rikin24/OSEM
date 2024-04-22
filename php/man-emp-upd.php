@@ -35,17 +35,24 @@ if (isset($_GET['id'])) {
 
     $id = input($_POST['id']);
     $name = input($_POST['name']);
-    $position = input($_POST['position']);
+    $skillName = input($_POST['skillName']);
+    $skillDesc = input($_POST['skillDesc']);
 
     if (empty($name)) {
         header("Location: ../man-employees-update.php?id=$id&error=Missing Name");
     } else {
 
-        $sql = "UPDATE users SET name='$name', position='$position' WHERE id=$id";
+        $sql = "UPDATE users SET name='$name' WHERE id=$id";
         $result = mysqli_query($link, $sql);
+        if ($skillName != "") {
+            $sql2 = "INSERT INTO skills (skill_name, skill_desc, empID) VALUES ('$skillName', '$skillDesc', '$id')";
+            $result2 = mysqli_query($link, $sql2);
+        }
 
         if ($result) {
             header("Location: ../man-employees-update.php?id=$id&success=Employee Updated Successfully");
+        } else if (($skillDesc != "") && ($skillName == "")) {
+                header("Location: ../man-employees-update.php?id=$id&error=Test");
         } else {
             header("Location: ../man-employees-update.php?id=$id&error=An Unknown Error Occurred");
         }
