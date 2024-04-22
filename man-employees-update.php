@@ -30,23 +30,79 @@ include "./php/man-emp-upd.php";
                        type="text"
                        id="name"
                        name="name"
-                       value="<?=$empData['name'] ?>">
+                       value="<?=$empData['name']?>">
             </div>
         </div>
+        <br>
         <div class="form-group">
             <div class="mb-0">
-                <label class="form-label">Select Position</label>
+                <label class="form-label">Skills</label>
             </div>
-            <select class="form-select mb-4"
-                    name="position">
-                <option selected value="employee">Employee</option>
-                <option value="manager">Manager</option>
-            </select>
+            <div class="mb-3">
+                <?php
+                include "./php/db-config.php";
+                // Display current existing skills for selected employee
+                $sql = "SELECT * FROM skills WHERE empID='$id' ORDER BY skill_name ASC";
+                $skillsRead = mysqli_query($link, $sql);
+                if (mysqli_num_rows($skillsRead)) { ?>
+                    <table class="table table-striped table-hover shadow-sm" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th scope="col">Skill</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $i = 0;
+                        while($skillsData = mysqli_fetch_assoc($skillsRead)){
+                            // Fetch data from database corresponding to SQL command earlier, then display each row
+                            $i++;
+                            ?>
+                            <tr>
+                                <td><?=$skillsData['skill_name']?></td>
+                                <td><?=$skillsData['skill_desc'];?></td>
+                                <td>
+                                    <div class="btn-group-sm">
+                                        <!--Fetch selected skill to be deleted for the employee being updated-->
+                                        <a href="php/man-emp-skill-rem.php?empID=<?=$empData['id']?>&skill_name=<?=$skillsData['skill_name']?>"
+                                           class="btn btn-outline-danger mx-1">Remove</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                <?php } ?>
+            </div>
             <input type="text"
                    name="id"
                    value="<?=$empData['id']?>"
                    hidden>
         </div>
+        <br>
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="name">Add Skill</label>
+                <input class="form-control"
+                       type="text"
+                       id="skillName"
+                       name="skillName"
+                       value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="name">Skill Description (Optional)</label>
+                <input class="form-control"
+                       type="text"
+                       id="skillDesc"
+                       name="skillDesc"
+                       value="">
+            </div>
+        </div>
+        <br>
         <div class="d-flex justify-content-center align-items-center">
             <button type="submit"
                     class="btn btn-primary mx-2"

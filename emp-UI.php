@@ -11,13 +11,23 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
     header("Location: man-home.php");
 } else if ($_SESSION['position'] === 'admin') {
     header("Location: adm-home.php");
-} ?>
+}
+
+function input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$currentID = input ($_SESSION['id']);
+?>
 
 <!DOCTYPE html>
 <!--Common UI and features across all pages are called from here-->
 <html>
 <head>
-    <title>OSEM Manager Portal</title>
+    <title>OSEM Employee Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
@@ -35,6 +45,9 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="emp-home.php">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="emp-skills.php">Skills</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>
