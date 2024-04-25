@@ -50,6 +50,9 @@ $currentID = input ($_SESSION['id']);
             <a class="nav-link" href="emp-skills.php">Skills</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="emp-teams.php">Teams</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>
         </li>
     </ul>

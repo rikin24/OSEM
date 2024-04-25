@@ -40,6 +40,9 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
             <a class="nav-link" href="man-employees.php">Employees</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="man-teams.php">Teams</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="php/logout.php">Log out</a>
         </li>
     </ul>
