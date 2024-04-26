@@ -11,7 +11,17 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
     header("Location: emp-home.php");
 } else if ($_SESSION['position'] === 'admin') {
     header("Location: adm-home.php");
-} ?>
+}
+
+function input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$currentID = input ($_SESSION['id']);
+?>
 
 <!DOCTYPE html>
 <!--Common UI and features across all pages are called from here-->
@@ -42,6 +52,9 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="man-teams.php">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="man-change-pass.php">Change Password</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="php/logout.php">Log out</a>

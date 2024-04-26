@@ -2,15 +2,8 @@
 
 if (isset($_GET['id'])) {
     include "./php/db-config.php";
-    // Format employee data
-    function input($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
 
-    $id = input($_GET['id']);
+    $id = $_GET['id'];
 
     $sql = "SELECT * FROM users WHERE id=$id";
     $result = mysqli_query($link, $sql);
