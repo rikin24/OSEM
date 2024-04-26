@@ -5,10 +5,6 @@ include "./emp-UI.php";
 <body>
     <h2 class="text-dark text-center p-3">Skills</h2>
     <br>
-    <div class="d-flex justify-content-center align-items-center">
-        <a href="#" class="btn btn-primary">Test</a>
-    </div>
-    <br>
     <?php if (isset($_GET['error'])) { ?>
         <!--Fetch appropriate error-->
         <div class="alert alert-danger start-50 translate-middle-x my-3 text-center" style="width: 20%" role="alert">
