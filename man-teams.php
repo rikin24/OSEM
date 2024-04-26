@@ -12,8 +12,12 @@ include "./man-UI.php";
     <div class="container d-flex justify-content-center align-items-center">
         <?php
         include "./php/db-config.php";
-        // List all skills of currently logged in employee
-        $sql = "SELECT * FROM teams ORDER BY team_name ASC";
+        // List all teams with unique names
+        // Inner join used to remove duplicates
+        // MIN used to take the lowest team id value as the one to reference for teams with duplicate names
+        $sql = "SELECT t1.* FROM teams t1 INNER JOIN (
+            SELECT MIN(id) AS id, team_name FROM teams GROUP BY team_name
+            ) t2 ON t1.id = t2.id ORDER BY t1.team_name ASC";
         $teamsRead = mysqli_query($link, $sql);
         if (mysqli_num_rows($teamsRead)) { ?>
             <table class="table table-striped table-hover shadow-sm" style="width: 50%">
@@ -21,7 +25,7 @@ include "./man-UI.php";
                 <tr>
                     <th scope="col">Team</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Members</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +38,13 @@ include "./man-UI.php";
                     <tr>
                         <td><?=$teamsData['team_name']?></td>
                         <td><?=$teamsData['team_desc'];?></td>
-                        <td><?=$teamsData['empTID'];?></td>
+                        <td>
+                            <div class="btn-group-sm">
+                                <a href="man-team-room.php?id=<?=$teamsData['id']?>" class="btn btn-outline-success">Enter Room</a>
+                                <a href="#" class="btn btn-outline-primary">Update</a>
+                                <a href="#" class="btn btn-outline-danger">Remove</a>
+                            </div>
+                        </td>
                     </tr>
                 <?php } ?>
                 </tbody>

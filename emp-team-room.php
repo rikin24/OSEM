@@ -11,7 +11,7 @@ $currentTeam = $teamData['team_name'];
         <h4>Members</h4>
         <?php
         include "./php/db-config.php";
-        // List all skills of currently logged in employee
+        // List all team members' details in users table, by taking user IDs corresponding to foreign key empTID in teams table
         $sql = "SELECT u.* FROM users u JOIN teams t ON u.id = t.empTID WHERE t.team_name ='$currentTeam'";
         $teamsRead = mysqli_query($link, $sql);
         if (mysqli_num_rows($teamsRead)) { ?>

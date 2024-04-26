@@ -8,7 +8,7 @@ include "./emp-UI.php";
     <div class="container d-flex justify-content-center align-items-center">
         <?php
         include "./php/db-config.php";
-        // List all skills of currently logged in employee
+        // List all teams the current employee is a part of
         $sql = "SELECT * FROM teams WHERE empTID='$currentID' ORDER BY team_name ASC";
         $teamsRead = mysqli_query($link, $sql);
         if (mysqli_num_rows($teamsRead)) { ?>
@@ -32,7 +32,7 @@ include "./emp-UI.php";
                         <td><?=$teamsData['team_desc'];?>
                         <td>
                             <div class="btn-group-sm">
-                                <a href="emp-team-room.php?id=<?=$teamsData['id']?>" class="btn btn-outline-primary">Enter Room</a>
+                                <a href="emp-team-room.php?id=<?=$teamsData['id']?>" class="btn btn-outline-success">Enter Room</a>
                             </div>
                         </td>
                     </tr>
