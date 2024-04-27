@@ -6,7 +6,7 @@ include "./man-UI.php";
     <h2 class="text-dark text-center p-3">Teams</h2>
     <br>
     <div class="d-flex justify-content-center align-items-center">
-        <a href="#" class="btn btn-primary">Add Team</a>
+        <a href="man-teams-add.php" class="btn btn-primary">Add Team</a>
     </div>
     <br>
         <?php if (isset($_GET['error'])) { ?>
