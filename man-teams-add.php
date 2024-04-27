@@ -64,7 +64,7 @@ include "./man-UI.php";
                         <td><?=$empData['email'];?></td>
                         <td>
                             <div class="btn-group-sm">
-                                <!--Update/delete employee with corresponding unique id in database-->
+                                <!--Select employee with corresponding unique id in database-->
                                 <input type="checkbox" name="empTID[]" value="<?=$empData['id']?>">
                             </div>
                         </td>

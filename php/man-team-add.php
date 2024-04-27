@@ -2,7 +2,7 @@
 include "./db-config.php";
 
 if (isset($_POST['createTeam'])) {
-    // Format employee data (if entered) when pressing add
+    // Format team data
     function input($data){
         $data = trim($data);
         $data = stripslashes($data);
