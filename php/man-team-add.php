@@ -22,6 +22,8 @@ if (isset($_POST['createTeam'])) {
         header("Location: ../man-teams-add.php?error=Missing Team Name");
     } else if (empty($empTID)) {
         header("Location: ../man-teams-add.php?error=Please select at least one member");
+    } else if (mysqli_num_rows($check) > 0) {
+        header("Location: ../man-teams-add.php?error=Team Name Already in Use");
     } else {
         foreach($empTID as $id) {
 
