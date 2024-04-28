@@ -21,40 +21,6 @@ function input($data) {
 }
 
 $currentID = input ($_SESSION['id']);
-
-// Fetch calendar data and convert to JSON before displaying on FullCalendar
-$calSql = "SELECT event_name, event_start, event_end FROM calendar";
-$result = mysqli_query($link, $calSql);
-// Calendar 1 Data
-$events = [];
-while ($row = $result->fetch_assoc()) {
-    $events[] = [
-        'title' => $row['event_name'],
-        'start' => $row['event_start'],
-        'end' => $row['event_end'],
-        'color' => '#0d6efd'
-    ];
-}
-
-$calSql2 = "SELECT event_name, event_start, event_end FROM calendar2";
-$result2 = mysqli_query($link, $calSql2);
-// Calendar 2 Data
-$events2 = [];
-
-while ($row = $result2->fetch_assoc()) {
-    $events2[] = [
-        'title' => $row['event_name'],
-        'start' => $row['event_start'],
-        'end' => $row['event_end'],
-        'color' => '#6610f2'
-    ];
-}
-
-$allEvents = array_merge($events, $events2);
-
-$allEventsJson = json_encode($allEvents);
-$eventsJson = json_encode($events2);
-
 ?>
 
 <!DOCTYPE html>
