@@ -34,24 +34,32 @@ $currentID = input ($_SESSION['id']);
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark justify-content-end">
-    <p class="navbar-text text-white">Welcome,
-        <?php
-        // Display name of current session user
-        $currentName = $_SESSION['name'];
-        echo $currentName . " ";
-        ?>
+    <div class="d-flex justify-content-between w-100 mx-3">
+        <p class="navbar-text text-white">Welcome,
+            <?php
+            // Display name of current session user
+            $currentName = $_SESSION['name'];
+            echo $currentName . " ";
+            ?>
 
-        | OSEM Employee Portal</p>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="emp-home.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="emp-skills.php">Skills</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="php/logout.php">Log out</a>
-        </li>
-    </ul>
+            | OSEM Employee Portal</p>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="emp-home.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="emp-skills.php">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="emp-teams.php">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="emp-change-pass.php">Change Password</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="php/logout.php">Log out</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 </body>

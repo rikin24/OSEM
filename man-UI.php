@@ -11,7 +11,17 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
     header("Location: emp-home.php");
 } else if ($_SESSION['position'] === 'admin') {
     header("Location: adm-home.php");
-} ?>
+}
+
+function input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$currentID = input ($_SESSION['id']);
+?>
 
 <!DOCTYPE html>
 <!--Common UI and features across all pages are called from here-->
@@ -24,24 +34,32 @@ if ((!isset($_SESSION['email']) && !isset($_SESSION['id'])) || (isset($_SESSION[
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark justify-content-end">
-    <p class="navbar-text text-white">Welcome,
-        <?php
-        // Display name of current session user
-            $currentName = $_SESSION['name'];
-            echo $currentName . " ";
-        ?>
+    <div class="d-flex justify-content-between w-100 mx-3">
+        <p class="navbar-text text-white">Welcome,
+            <?php
+            // Display name of current session user
+                $currentName = $_SESSION['name'];
+                echo $currentName . " ";
+            ?>
 
-        | OSEM Manager Portal</p>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="man-home.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="man-employees.php">Employees</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="php/logout.php">Log out</a>
-        </li>
-    </ul>
+            | OSEM Manager Portal</p>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="man-home.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="man-employees.php">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="man-teams.php">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="man-change-pass.php">Change Password</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="php/logout.php">Log out</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 </body>
