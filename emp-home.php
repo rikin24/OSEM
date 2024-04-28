@@ -36,8 +36,12 @@ $indEventsJson = json_encode($indEvents);
 </script>
 
 <body>
-    <h2 class="text-dark text-center p-3">Home</h2>
+    <h2 class="text-dark text-center p-3">Home - Personal Calendar</h2>
+    <div class="d-flex justify-content-center align-items-center">
+        <a href="emp-ind-calendar-add.php" class="btn btn-primary">Add Event</a>
+    </div>
     <div class="container justify-content-center align-items-center" style="width: 80%">
         <div id="calendar" style="max-height: 550px;"></div>
     </div>
+<br>
 </body>
