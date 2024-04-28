@@ -21,6 +21,40 @@ function input($data) {
 }
 
 $currentID = input ($_SESSION['id']);
+
+// Fetch calendar data and convert to JSON before displaying on FullCalendar
+$calSql = "SELECT event_name, event_start, event_end FROM calendar";
+$result = mysqli_query($link, $calSql);
+// Calendar 1 Data
+$events = [];
+while ($row = $result->fetch_assoc()) {
+    $events[] = [
+        'title' => $row['event_name'],
+        'start' => $row['event_start'],
+        'end' => $row['event_end'],
+        'color' => '#0d6efd'
+    ];
+}
+
+$calSql2 = "SELECT event_name, event_start, event_end FROM calendar2";
+$result2 = mysqli_query($link, $calSql2);
+// Calendar 2 Data
+$events2 = [];
+
+while ($row = $result2->fetch_assoc()) {
+    $events2[] = [
+        'title' => $row['event_name'],
+        'start' => $row['event_start'],
+        'end' => $row['event_end'],
+        'color' => '#6610f2'
+    ];
+}
+
+$allEvents = array_merge($events, $events2);
+
+$allEventsJson = json_encode($allEvents);
+$eventsJson = json_encode($events2);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +62,15 @@ $currentID = input ($_SESSION['id']);
 <html>
 <head>
     <title>OSEM Employee Portal</title>
+
+    <!-- Calendar Libraries -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+    <!-- Bootstrap, Favicon & CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark justify-content-end">
