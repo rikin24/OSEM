@@ -2,12 +2,13 @@
 include "./emp-UI.php";
 
 // Fetch calendar data and convert to JSON before displaying on FullCalendar
-$indCalSql = "SELECT event_name, event_start, event_end FROM ind_calendar WHERE empCID='$currentID'";
+$indCalSql = "SELECT id, event_name, event_start, event_end FROM ind_calendar WHERE empCID='$currentID'";
 $indResult = mysqli_query($link, $indCalSql);
 // Employee's Personal Calendar Data
 $indEvents = [];
 while ($row = $indResult->fetch_assoc()) {
     $indEvents[] = [
+        'id' => $row['id'],
         'title' => $row['event_name'],
         'start' => $row['event_start'],
         'end' => $row['event_end'],
@@ -30,6 +31,15 @@ $indEventsJson = json_encode($indEvents);
                 right: 'prev,next today',
             },
             events: <?php echo $indEventsJson; ?>,
+            eventMouseEnter: function(mouseEnterInfo) {
+                mouseEnterInfo.el.style.backgroundColor = '#0d60dc';
+            },
+            eventMouseLeave: function(mouseLeaveInfo) {
+                mouseLeaveInfo.el.style.backgroundColor = '#0d6efd';
+            },
+            eventClick: function(info) {
+                window.location.href = 'emp-ind-calendar-update.php?id=' + info.event.id;
+            }
         });
         calendar.render();
     });
@@ -41,7 +51,7 @@ $indEventsJson = json_encode($indEvents);
         <a href="emp-ind-calendar-add.php" class="btn btn-primary">Add Event</a>
     </div>
     <div class="container justify-content-center align-items-center" style="width: 80%">
-        <div id="calendar" style="max-height: 550px;"></div>
+        <div id="calendar" style="max-height: 525px;"></div>
     </div>
 <br>
 </body>
