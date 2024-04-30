@@ -6,13 +6,14 @@ $currentTeam = $teamData['team_name'];
 $teamId = $teamData['id'];
 
 // Fetch calendar data and convert to JSON before displaying on FullCalendar
-$teamCalSql = "SELECT event_name, event_start, event_end FROM team_calendar WHERE teamCID='$teamId'";
+$teamCalSql = "SELECT id, event_name, event_start, event_end FROM team_calendar WHERE teamCID='$teamId'";
 $teamResult = mysqli_query($link, $teamCalSql);
 // Team Calendar Data
 $teamEvents = [];
 
 while ($row = $teamResult->fetch_assoc()) {
     $teamEvents[] = [
+        'id' => $row['id'],
         'title' => $row['event_name'],
         'start' => $row['event_start'],
         'end' => $row['event_end'],
@@ -35,6 +36,15 @@ $teamEventsJson = json_encode($teamEvents);
                 right: 'prev,next today',
             },
             events: <?php echo $teamEventsJson; ?>,
+            eventMouseEnter: function(mouseEnterInfo) {
+                mouseEnterInfo.el.style.backgroundColor = '#580ed1';
+            },
+            eventMouseLeave: function(mouseLeaveInfo) {
+                mouseLeaveInfo.el.style.backgroundColor = '#6610f2';
+            },
+            eventClick: function(info) {
+                window.location.href = 'man-team-calendar-update.php?id=' + info.event.id;
+            }
         });
         calendar.render();
     });
