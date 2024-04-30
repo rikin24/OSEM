@@ -1,7 +1,7 @@
 <?php
     $db_server = "localhost";
     $db_user = "root";
-    $db_pass = "I-Eat-Cheese.";
+    $db_pass = "";
     $db_name = "osem";
 
     $link = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
