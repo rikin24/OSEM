@@ -29,8 +29,11 @@ $currentID = input ($_SESSION['id']);
 <head>
     <title>OSEM Manager Portal</title>
 
-    <!-- Calendar Libraries -->
+    <!-- FullCalendar API -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+    <!-- Chart.js API -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Bootstrap, Favicon & CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -57,6 +60,9 @@ $currentID = input ($_SESSION['id']);
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="man-teams.php">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="man-stats.php">Statistics</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="man-change-pass.php">Change Password</a>
