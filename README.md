@@ -43,7 +43,7 @@ Student Number: 209013380
     $cfg['Servers'][$i]['password'] = '';
     ```
     
-5. Locate the “db-config.php” file in the “php” folder of the repository and update the following values with your MySQL details accordingly:
+5. Locate the “db-config.php” file in the “php” folder of the repository and update the following values with your MySQL username and password accordingly:
     
     ```php
     $db_user = "root";
