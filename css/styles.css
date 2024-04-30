@@ -1,3 +1,7 @@
 .navbar-text {
     vertical-align: center;
 }
+
+.fc-event {
+    cursor: pointer;
+}
