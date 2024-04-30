@@ -41,7 +41,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['positio
                 } else if ($position === 'employee') {
                     header("Location: ../emp-home.php");
                 } else if ($position === 'admin') {
-                    header("Location: ../adm-home.php");
+                    header("Location: ../adm-managers.php");
                 }
 
             } else {

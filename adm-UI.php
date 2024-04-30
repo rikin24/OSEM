@@ -45,9 +45,6 @@ $currentID = input ($_SESSION['id']);
             | OSEM Admin Portal</p>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="adm-home.php">Home</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="adm-managers.php">Managers</a>
             </li>
             <li class="nav-item">
