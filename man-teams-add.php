@@ -4,6 +4,18 @@ include "./man-UI.php";
 
 <body>
 <h2 class="text-dark text-center p-3">Add Team</h2>
+<div class="d-flex justify-content-center align-items-center">
+    <form class="p-4 rounded-3 bg-white align-items-center"
+          action="man-teams-add.php"
+          method="get">
+        <div class="form-group">
+            <div class="mb-3 d-flex align-items-center gap-2">
+                <input class="form-control" type="text" name="search" placeholder="Search employees">
+                <button class="btn btn-secondary type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="container d-flex justify-content-center align-items-center"
      style="min-height: 20vh">
     <form class="p-4 rounded-3 bg-white align-items-center"
@@ -41,7 +53,17 @@ include "./man-UI.php";
         </div>
         <?php
         include "./php/db-config.php";
-        $sql = "SELECT * FROM users WHERE position='employee' ORDER BY name ASC";
+
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+        $sql = "SELECT * FROM users WHERE position='employee'";
+
+        if (!empty($search)) {
+            $sql .= " AND (name LIKE '%$search%' OR email LIKE '%$search%')";
+        }
+
+        $sql .= " ORDER BY name ASC";
+
         $empRead = mysqli_query($link, $sql);
         if (mysqli_num_rows($empRead)) { ?>
             <table class="table table-striped table-hover shadow-sm" style="width: 100%">
@@ -60,8 +82,8 @@ include "./man-UI.php";
                     $i++;
                     ?>
                     <tr>
-                        <td><?=$empData['name']?></td>
-                        <td><?=$empData['email'];?></td>
+                        <td><?php echo htmlspecialchars($empData['name']); ?></td>
+                        <td><?php echo htmlspecialchars($empData['email']); ?></td>
                         <td>
                             <div class="btn-group-sm">
                                 <!--Select employee with corresponding unique id in database-->
