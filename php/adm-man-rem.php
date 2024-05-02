@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($link, $sql);
 
     if ($result) {
-        header("Location: ../adm-managers.php?success=Employee Removed Successfully");
+        header("Location: ../adm-managers.php?success=Manager Removed Successfully");
     } else {
         header("Location: ../adm-managers.php?error=An Unknown Error Occurred");
     }

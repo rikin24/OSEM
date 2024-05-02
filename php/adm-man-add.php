@@ -35,7 +35,7 @@ if (isset($_POST['create'])) {
         $result = mysqli_query($link, $sql);
 
         if ($result) {
-            header("Location: ../adm-managers-add.php?success=Employee Added Successfully");
+            header("Location: ../adm-managers-add.php?success=Manager Added Successfully");
         } else {
             header("Location: ../adm-managers-add.php?error=An Unknown Error Occurred");
         }

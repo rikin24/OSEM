@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
         $result = mysqli_query($link, $sql);
 
         if ($result) {
-            header("Location: ../adm-managers-update.php?id=$id&success=Employee Updated Successfully");
+            header("Location: ../adm-managers-update.php?id=$id&success=Manager Updated Successfully");
         } else {
             header("Location: ../adm-managers-update.php?id=$id&error=An Unknown Error Occurred");
         }
