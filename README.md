@@ -4,8 +4,6 @@
 
 Online Smart Employee Manager (OSEM) is an online website that managers of an organisation can use to invite new employees to, where they can manage employees’ skills and teams, along with planning and organising various events/tasks, and viewing statistics. Employees have separate logins that allow them to manage their own tasks and keep a track of events, team updates and their verified skills. The system relies on a backend database, which stores login details as well as any skills, teams and employee/manager data that may have relationships.
 
-Student Name: Rikin Bhudia\
-Student Number: 209013380
 
 ## System requirements
 
